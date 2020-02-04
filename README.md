@@ -6,4 +6,4 @@ In order to properly function, Twitch requires that you authorize **TTV VCFB** t
 
 Once you've properly authorized **TTV VCFB** to work with your account, you're all set and good to go! Simply click on a user's name in any Twitch chat and the "Add Friend" button will be replaced with a shiny new "Follow"/"Unfollow" button. The "Follow" button, when clicked, will give you the option to follow with or without notifications active. If you're following the user you've clicked on, you'll be shown a simple "Unfollow" button instead. If the user you've clicked on is the same as the channel you're currently viewing then the Add Friend button will stay untouched since you've already got a native Follow button on the page.
 
-**TTV VCFB** *should* be fully comptaible with [BetterTTV](https://betterttv.com/) and [FrankerFaceZ](https://www.frankerfacez.com/), though that can't always be guaranteed.
+**TTV VCFB** *should* be fully compatible with [BetterTTV](https://betterttv.com/) and [FrankerFaceZ](https://www.frankerfacez.com/), though that can't always be guaranteed.
