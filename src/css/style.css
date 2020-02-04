@@ -1,0 +1,83 @@
+/**
+ * Button(s) container
+ */
+.vcfb-main-button-container {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+}
+
+    .vcfb-button:hover .vcfb-icon,
+    .vcfb-hover-icon {
+        display: none;
+    }
+
+    .vcfb-button.vcfb-error {
+        background-image: linear-gradient(45deg, #9147ff 25%, #bb1411 25%, #bb1411 50%, #9147ff 50%, #9147ff 75%, #bb1411 75%, #bb1411 100%);
+        background-size: 20px 20px;
+    }
+
+    .vcfb-notification-buttons-container .vcfb-button:hover .vcfb-icon,
+    .vcfb-button:hover .vcfb-hover-icon {
+        display: inline;
+    }
+
+    .vcfb-notification-buttons-container {
+        position: absolute;
+        top: calc(-200% - 45px);
+        left: -12px;
+        white-space: nowrap;
+        visibility: hidden;
+        opacity: 0;
+        transform: translate3d(0, 0, 0);
+        pointer-events: none;
+        transition: visibility 300ms linear 0s,
+                    opacity 300ms,
+                    transform 300ms;
+        border-radius: 8px;
+        min-width: 105px;
+        background: rgba(145, 71, 255, 0.65);
+        padding: 8px;
+    }
+
+        .vcfb-notification-buttons-container::after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            margin: 0 0 0 -10px;
+            border: solid transparent;
+            border-color: rgba(145, 71, 255, 0);
+            border-top-color: rgba(145, 71, 255, 0.65);
+            border-width: 10px;
+            top: 100%;
+            left: 50%;
+            width: 0;
+            height: 0;
+        }
+
+        .vcfb-notification-buttons-container .vcfb-button {
+            border: 1px solid #efeff1;
+            background: #e5e5e5;
+        }
+
+            .vcfb-notification-buttons-container .vcfb-icon {
+                filter: invert(100%);
+            }
+
+        .tw-root--theme-dark .vcfb-notification-buttons-container .vcfb-button {
+            background: #3a3a3d;
+        }
+
+            .tw-root--theme-dark .vcfb-notification-buttons-container .vcfb-icon {
+                filter: none;
+            }
+
+    .vcfb-animate {
+        visibility: visible;
+        opacity: 1;
+        transform: translate3d(0, 100%, 0);
+        pointer-events: all;
+        transition: visibility 0s linear 0s,
+                    opacity 300ms,
+                    transform 300ms;
+    }

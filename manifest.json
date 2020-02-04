@@ -1,0 +1,64 @@
+{
+    "manifest_version":          2,
+    "name":                      "TTV Viewer Card Follow Button",
+    "short_name":                "TTV VCFB",
+    "author":                    "ArgoWizbang",
+    "developer":                 {
+        "name": "ArgoWizbang",
+        "url":  "https://twitter.com/argowizbang"
+    },
+    "version":                   "0.1.0",
+
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "ttv_viewer_card_follow_button@argowizbang.ttv"
+        }
+    },
+
+    "description":               "Replaces the \"Add Friend\" button on Twitch.tv chat viewer cards with a \"Follow\"/\"Unfollow\" button.",
+
+    "icons":                     {
+        "16":  "img/logo-icons/icon-16.png",
+        "48":  "img/logo-icons/icon-48.png",
+        "96":  "img/logo-icons/icon-96.png",
+        "128": "img/logo-icons/icon-128.png"
+    },
+
+    "background": {
+        "scripts":    [
+            "vendor/browser-polyfill.js",
+            "src/js/global.js",
+            "src/js/background.js"
+        ]
+    },
+
+    "content_scripts":           [
+        {
+            "matches":       ["*://*.twitch.tv/*"],
+            "exclude_globs": ["*://api.twitch.tv/*"],
+            "css":           [ "src/css/style.css" ],
+            "js":            [
+                "vendor/browser-polyfill.js",
+                "src/js/global.js",
+                "src/js/content.js"
+            ]
+        }
+    ],
+
+    "web_accessible_resources": [
+        "img/*.svg"
+    ],
+
+    "options_ui":                {
+        "browser_style": true,
+        "chrome_style":  true,
+        "open_in_tab":   false,
+        "page":          "src/options.html"
+    },
+
+    "permissions":               [
+        "identity",
+        "storage",
+        "*://*.twitch.tv/*"
+    ]
+}
