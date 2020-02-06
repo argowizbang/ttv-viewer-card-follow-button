@@ -1,5 +1,9 @@
 # TTV Viewer Card Follow Button
 
+Google Chrome: https://chrome.google.com/webstore/detail/ttv-viewer-card-follow-bu/ffoepnjhmoejbkffmpchccmoghfkofdb
+
+Mozilla Firefox: https://addons.mozilla.org/en-US/firefox/addon/ttv-viewer-card-follow-button/
+
 TTV Viewer Card Follow Button replaces the "Add Friend" button in the chat viewer cards (seen when you click on a user's name in Twitch chat) with a much more useful "Follow"/"Unfollow" button.
 
 In order to properly function, Twitch requires that you authorize **TTV VCFB** to be able to connect to your account in order to allow it to follow/unfollow channels on your behalf. On installation/activation/update of **TTV VCFB**, you'll be directed to an options page where you can perform this authorization. You will also be directed to do so if you attempt to use the viewer card follow/unfollow button but do not have a current authorization from Twitch. If you are logged in to a different account from the one you currently have authorized, your current authorization will cease to function and you will be asked to reauthorize.
