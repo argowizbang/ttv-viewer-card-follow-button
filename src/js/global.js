@@ -54,4 +54,4 @@ const fetchData          = async function( url, init = {} ) {
       OAUTH_STATE  = generateOauthState(),
       API_URL_BASE = 'https://api.twitch.tv/helix/users';
 
-      getSavedToken().then( function( token ) { oauthToken = token; } );
+getSavedToken().then( function( token ) { oauthToken = token; } );
