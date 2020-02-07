@@ -3,11 +3,12 @@
     "name":                      "TTV Viewer Card Follow Button",
     "short_name":                "TTV VCFB",
     "author":                    "ArgoWizbang",
+    "homepage_url":              "https://github.com/argowizbang/ttv-viewer-card-follow-button",
     "developer":                 {
         "name": "ArgoWizbang",
-        "url":  "https://twitter.com/argowizbang"
+        "url":  "https://github.com/argowizbang/ttv-viewer-card-follow-button"
     },
-    "version":                   "0.1.0",
+    "version":                   "1.0.0",
 
     "browser_specific_settings": {
         "gecko": {
