@@ -40,7 +40,7 @@ const ROOT                      = document.getElementById( 'root' ),
             } );
         },
         detectViewerCard          = function ( e ) {
-            if ( e.target.classList.contains( 'chat-author__display-name' ) || e.target.parentNode.classList.contains ( 'chatter-name' ) || e.target.classList.contains( 'chat-line__message-mention' ) ) {
+            if ( e.target.classList.contains( 'chat-author__display-name' ) || e.target.classList.contains( 'chat-line__message-mention' ) || e.target.classList.contains( 'tw-capcase' ) || e.target.classList.contains( 'tw-ellipsis' ) || e.target.parentNode.classList.contains ( 'chatter-name' ) ) {
                 let viewerName    = e.target.textContent.trim().toLowerCase();
 
                 viewerCard  = document.getElementsByClassName( 'chat-room__viewer-card' )[0].getElementsByClassName( 'viewer-card-layer' )[0];
@@ -61,7 +61,7 @@ const ROOT                      = document.getElementById( 'root' ),
         },
         detectAddFriendButton           = function( mutationsList, _observer ) {
             let mutation, addFriendButton, viewerCardUser,
-                currentChannelName = document.getElementsByClassName( 'channel-header-user-tab__user-content' )[0].textContent.trim();
+                currentChannelName = document.getElementsByClassName( 'channel-header-user-tab__user-content' )[0].getElementsByTagName( 'p' )[0].textContent.trim();
 
             for( mutation of mutationsList ) {
                 addFriendButton = mutation.target.querySelector( '[data-test-selector="add-button"]' );
