@@ -118,8 +118,7 @@ const ROOT                      = document.getElementById( 'root' ),
                 fetchData( 'https://api.twitch.tv/kraken/users/' + currentUser.id + '/follows/channels/' + viewerId + '?notifications=' + notificationsSetting, {
                     method:  followAction,
                     headers: {
-                        Accept:        'application/vnd.twitchtv.v5+json',
-                        Authorization: 'OAuth ' + oauthToken
+                        Accept:        'application/vnd.twitchtv.v5+json'
                     }
                 } );
             } );
