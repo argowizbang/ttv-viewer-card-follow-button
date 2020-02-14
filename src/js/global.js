@@ -7,7 +7,14 @@ const fetchData          = async function( url, init = {} ) {
 
           init.headers['Client-ID'] = CLIENT_ID;
 
-          const response = await fetch( url, init );
+          const response = await getSavedToken().then( async function( token ) {
+              if ( ! init.headers['Authorization'] ) {
+                  init.headers['Authorization'] = 'OAuth ' + token;
+              }
+              const oauthResponse = await fetch( url, init );
+
+              return oauthResponse;
+          } );
 
           return await response.json();
       },
@@ -20,7 +27,7 @@ const fetchData          = async function( url, init = {} ) {
               browser.runtime.sendMessage( { action: 'redirect_url' } )
                   .then(
                       function( message ) { redirectURI = message.response; }, // Success
-                      function( error ) { console.log( 'Error getting redirect URI: ' + error ) } // Error
+                      function( error ) { console.error( 'Error getting redirect URI: ' + error ) } // Error
                   );
           }
 
