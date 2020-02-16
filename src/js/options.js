@@ -1,3 +1,28 @@
+/***********************************************************************
+ * TTV Viewer Card Follow Button - Replaces Twitch chat's viewr card
+ * "Add Friend" button with a "Follow"/"Unfollow" button.
+ * Copyright (C) 2020  Argo Wizbang
+ *
+ * This file is a part of TTV Viewer Card Follow button.
+ *
+ * TTV Viewer Card Follow button is free software: you can redistribute
+ * it and/or modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation, either version
+ * 3 of the License, or (at your option) any later version.
+ *
+ * TTV Viewer Card Follow button is distributed in the hope that it
+ * will be useful, but WITHOUT ANY WARRANTY; without even the implied
+ * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with TTV Viewer Card Follow button.  If not, see
+ * <https://www.gnu.org/licenses/>.
+ *
+ * Support: https://github.com/argowizbang/ttv-viewer-card-follow-button/
+ * Contact: argowizbang@gmail.com
+ **********************************************************************/
+
 const optionsForm = document.getElementById( 'options' ),
       oauthAction = function( e ) {
           if ( oauthToken ) {
