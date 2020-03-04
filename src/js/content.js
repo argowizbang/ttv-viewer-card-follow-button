@@ -50,7 +50,7 @@ const ROOT                      = document.getElementById( 'root' ),
             document.head.appendChild( SCRIPT_CSS );
             ROOT.querySelector( '.tw-pd-y-1 [data-test-selector="user-menu__toggle"]' ).click();
             ROOT.querySelector( '.tw-pd-y-1 [data-test-selector="user-menu__toggle"]' ).click();
-            document.head.removeChild( document.getElementById( 'vcfb-css' ) );
+            SCRIPT_CSS.remove();
             currentUser.login   = document.querySelector( '.user-menu-dropdown__main-menu [data-a-target="user-display-name"]' ).textContent.trim();
 
             if ( ! currentUser.id ) {
@@ -89,7 +89,8 @@ const ROOT                      = document.getElementById( 'root' ),
                 currentChannelName = document.getElementsByClassName( 'channel-header-user-tab__user-content' )[0].getElementsByTagName( 'p' )[0].textContent.trim();
 
             for( mutation of mutationsList ) {
-                addFriendButton = mutation.target.querySelector( '[data-test-selector="add-button"]' );
+                addFriendButton = mutation.target.querySelector( '[data-test-selector="add-button"], [data-test-selector="cancel-button"], [data-test-selector="accept-button"],[data-test-selector="unfriend-button"]' );
+
                 viewerCardUser  = mutation.target.getElementsByClassName( 'viewer-card-header__display-name' )[0].getElementsByClassName( 'tw-interactive' )[0].textContent.trim();
                 if ( addFriendButton && viewerCardUser && currentChannelName !== viewerCardUser ) {
                     convertAddFriendToFollow( addFriendButton );
@@ -149,12 +150,20 @@ const ROOT                      = document.getElementById( 'root' ),
             } );
         },
         setupButton                     = function( buttonName, ariaLabel, callback ) {
-            let buttonText = newButtons[ buttonName ].querySelector( '[data-a-target="tw-core-button-label-text"]');
+            let buttonText = newButtons[ buttonName ].querySelector( '[data-a-target="tw-core-button-label-text"]' );
 
-            buttonSVGs[ buttonName ].normal.className = '.tw-svg__asset--inherit vcfb-icon tw-mg-r-05';
+            if ( newButtons[ buttonName ].classList.contains( 'tw-button--success' ) ) { // User is already a friend
+                newButtons[ buttonName ].getElementsByClassName( 'tw-button__alert-text' )[0].remove();
+            }
+            
+            if ( newButtons[ buttonName ].dataset.testSelector === 'accept-button' && viewerCard.querySelector( '[data-test-selector="reject-button"]' ) ) {
+                viewerCard.querySelector( '[data-test-selector="reject-button"]' ).remove();
+            }
+    
+            buttonSVGs[ buttonName ].normal.className = 'tw-svg__asset--inherit vcfb-icon tw-mg-r-05';
+            newButtons[ buttonName ].className = 'tw-align-items-center tw-align-middle tw-border-bottom-left-radius-medium tw-border-bottom-right-radius-medium tw-border-top-left-radius-medium tw-border-top-right-radius-medium tw-core-button tw-core-button--primary tw-inline-flex tw-interactive tw-justify-content-center tw-overflow-hidden tw-relative vcfb-button';
             newButtons[ buttonName ].setAttribute( 'data-test-selector', buttonName + '-button' );
             newButtons[ buttonName ].setAttribute( 'aria-label', ariaLabel );
-            newButtons[ buttonName ].classList.add( 'vcfb-button' );
             newButtons[ buttonName ].addEventListener( 'click', callback );
             buttonText.parentNode.insertBefore( buttonSVGs[ buttonName ].normal,  buttonText );
 
@@ -169,7 +178,7 @@ const ROOT                      = document.getElementById( 'root' ),
                 newButtons[ buttonName ].classList.add( 'tw-mg-r-05' );
                 newButtons[ buttonName ].title = 'Turn notifications ' + buttonName.replace( 'notifsO', 'o' );
 
-                buttonText.parentNode.removeChild( buttonText );
+                buttonText.remove();
             } else if ( ! oauthToken ) {
                 newButtons[ buttonName ].classList.add( 'vcfb-error' );
             }
