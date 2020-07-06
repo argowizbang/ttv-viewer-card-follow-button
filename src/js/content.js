@@ -33,7 +33,7 @@ let viewerId, viewerCard, newButtons, buttonSVGs, followTextContainer, followAct
 
 const ROOT                      = document.getElementById( 'root' ),
       isFollowing               = async function( e ) {
-          return await fetchData( API_URL_BASE + '/follows?from_id=' + currentUser.id + '&to_id=' + viewerId )
+          return await fetchData( FOLLOWS_ENDPOINT + '?from_id=' + currentUser.id + '&to_id=' + viewerId )
             .then( function ( data ) { return Boolean( data.total ); } );
       },
       forceGenerateUserDropdown = function() {
@@ -86,7 +86,7 @@ const ROOT                      = document.getElementById( 'root' ),
         },
         detectAddFriendButton           = function( mutationsList, _observer ) {
             let mutation, addFriendButton, viewerCardUser,
-                currentChannelName = document.getElementsByClassName( 'channel-header-user-tab__user-content' )[0].getElementsByTagName( 'p' )[0].textContent.trim();
+                currentChannelName = document.getElementsByClassName( 'channel-info-content' )[0].getElementsByTagName( 'h1' )[0].textContent.trim();
 
             for( mutation of mutationsList ) {
                 addFriendButton = mutation.target.querySelector( '[data-test-selector="add-button"], [data-test-selector="cancel-button"], [data-test-selector="accept-button"],[data-test-selector="unfriend-button"]' );
@@ -114,8 +114,11 @@ const ROOT                      = document.getElementById( 'root' ),
                 if ( action === 'init' ) {
                     following = ! following;
                 }
+
+                console.log( following );
+                
                 if ( ! following ) {
-                    buttonSVGs.follow.normal.src    = resourceURL( 'img/following.svg' );
+                    buttonSVGs.follow.normal.src   = resourceURL( 'img/following.svg' );
                     buttonSVGs.follow.hover.src    = resourceURL( 'img/unfollow.svg' );
                     followTextContainer.textContent = 'Unfollow';
                     newButtons.follow.setAttribute( 'data-test-selector', 'unfollow-button' );
@@ -139,13 +142,15 @@ const ROOT                      = document.getElementById( 'root' ),
             changeFollowText();
             
             isFollowing().then( function( following ) {
-                let followAction = following ? 'DELETE' : 'PUT';
+                let followAction = following ? 'DELETE' : 'POST';
 
-                fetchData( 'https://api.twitch.tv/kraken/users/' + currentUser.id + '/follows/channels/' + viewerId + '?notifications=' + notificationsSetting, {
-                    method:  followAction,
-                    headers: {
-                        Accept:        'application/vnd.twitchtv.v5+json'
-                    }
+                fetchData( FOLLOWS_ENDPOINT, {
+                    method: followAction,
+                    body:   JSON.stringify( {
+                        from_id:             currentUser.id,
+                        to_id:               viewerId,
+                        allow_notifications: notificationsSetting
+                    } )
                 } );
             } );
         },

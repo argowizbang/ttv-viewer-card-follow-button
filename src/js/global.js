@@ -30,11 +30,12 @@ const fetchData          = async function( url, init = {} ) {
               init.headers = {};
           }
 
-          init.headers['Client-ID'] = CLIENT_ID;
+          init.headers['Client-ID']    = CLIENT_ID;
+          init.headers['Content-Type'] = 'application/json';
 
           const response = await getSavedToken().then( async function( token ) {
               if ( ! init.headers['Authorization'] ) {
-                  init.headers['Authorization'] = 'OAuth ' + token;
+                  init.headers['Authorization'] = 'Bearer ' + token;
               }
               const oauthResponse = await fetch( url, init );
 
@@ -80,10 +81,11 @@ const fetchData          = async function( url, init = {} ) {
       },
 
       // Globals
-      CLIENT_ID    = 'i9xbuttj2ai2ynysxki3fv05yuqntn',
-      REDIRECT_URI = getRedirectURI(),
-      RESOURCE_URL = resourceURL(),
-      OAUTH_STATE  = generateOauthState(),
-      API_URL_BASE = 'https://api.twitch.tv/helix/users';
+      CLIENT_ID        = 'i9xbuttj2ai2ynysxki3fv05yuqntn',
+      REDIRECT_URI     = getRedirectURI(),
+      RESOURCE_URL     = resourceURL(),
+      OAUTH_STATE      = generateOauthState(),
+      API_URL_BASE     = 'https://api.twitch.tv/helix/users',
+      FOLLOWS_ENDPOINT = API_URL_BASE + '/follows';
 
 getSavedToken().then( function( token ) { oauthToken = token; } );

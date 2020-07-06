@@ -38,7 +38,7 @@ const installationHook  = function() {
                   '?client_id=' + CLIENT_ID +
                   '&redirect_uri=' + encodeURIComponent( REDIRECT_URI ) +
                   '&response_type=token' +
-                  '&scope=user_read+user_follows_edit' +
+                  '&scope=user:read:email+user:edit:follows' +
                   '&force_verify=true' +
                   '&state=' + OAUTH_STATE
           } )
@@ -74,7 +74,7 @@ const installationHook  = function() {
                                     }
                                 } )
                                     .then( function( data ) {
-                                        if ( data.data[0].login !== request.user ) {
+                                        if ( data.status === 401 || data.data[0].login !== request.user ) {
                                             browser.storage.local.remove( 'access_token' );
                                         }
                                     } );
