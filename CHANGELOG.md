@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.2.1 - 2020-11-12
+### Fixed
+- Fixed bug caused by recent Twitch change which broke the process of obtaining current user's Twitch username
+
 ## 1.2.0 - 2020-07-06
 ### Changed
 - Replaced Twitch API v5 calls with new Helix endpoints for following/unfollowing
