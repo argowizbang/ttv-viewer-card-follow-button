@@ -48,10 +48,14 @@ const ROOT                      = document.getElementById( 'root' ),
             SCRIPT_CSS.id        = 'vcfb-css';
             SCRIPT_CSS.innerHTML = '.tw-pd-y-1 [data-test-selector="balloon-inside-click-detector"] { display: none !important; }';
             document.head.appendChild( SCRIPT_CSS );
-            ROOT.querySelector( '.tw-pd-y-1 [data-test-selector="user-menu__toggle"]' ).click();
-            ROOT.querySelector( '.tw-pd-y-1 [data-test-selector="user-menu__toggle"]' ).click();
-            SCRIPT_CSS.remove();
+
+            ROOT.querySelector( '.tw-pd-y-1 [data-test-selector="user-menu__toggle"]' ).click(); // Click to open dropdown and grab Twitch username
+
             currentUser.login   = document.querySelector( '.user-menu-dropdown__main-menu [data-a-target="user-display-name"]' ).textContent.trim();
+
+            SCRIPT_CSS.remove();
+
+            ROOT.querySelector( '.tw-pd-y-1 [data-test-selector="user-menu__toggle"]' ).click(); // Click again to close dropdown
 
             if ( ! currentUser.id ) {
                 fetchData( API_URL_BASE + '?login=' + currentUser.login )
@@ -115,8 +119,6 @@ const ROOT                      = document.getElementById( 'root' ),
                     following = ! following;
                 }
 
-                console.log( following );
-                
                 if ( ! following ) {
                     buttonSVGs.follow.normal.src   = resourceURL( 'img/following.svg' );
                     buttonSVGs.follow.hover.src    = resourceURL( 'img/unfollow.svg' );
