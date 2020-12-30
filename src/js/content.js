@@ -95,7 +95,7 @@ const ROOT                      = document.getElementById( 'root' ),
             for( mutation of mutationsList ) {
                 addFriendButton = mutation.target.querySelector( '[data-test-selector="add-button"], [data-test-selector="cancel-button"], [data-test-selector="accept-button"],[data-test-selector="unfriend-button"]' );
 
-                viewerCardUser  = mutation.target.getElementsByClassName( 'viewer-card-header__display-name' )[0].getElementsByClassName( 'tw-interactive' )[0].textContent.trim();
+                viewerCardUser  = mutation.target.getElementsByClassName( 'viewer-card-header__display-name' )[0].getElementsByTagName( 'a' )[0].textContent.trim();
                 if ( addFriendButton && viewerCardUser && currentChannelName !== viewerCardUser ) {
                     convertAddFriendToFollow( addFriendButton );
                     break;
