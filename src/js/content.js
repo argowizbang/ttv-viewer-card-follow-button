@@ -168,7 +168,7 @@ const ROOT                      = document.getElementById( 'root' ),
             }
     
             buttonSVGs[ buttonName ].normal.className = 'tw-svg__asset--inherit vcfb-icon tw-mg-r-05';
-            newButtons[ buttonName ].className = 'ScCoreButton-sc-1qn4ixc-0 ScCoreButtonPrimary-sc-1qn4ixc-1 jeBpig tw-core-button';
+            newButtons[ buttonName ].className = 'ScCoreButton-sc-1qn4ixc-0 ScCoreButtonPrimary-sc-1qn4ixc-1 jeBpig tw-core-button vcfb-button';
             newButtons[ buttonName ].setAttribute( 'data-test-selector', buttonName + '-button' );
             newButtons[ buttonName ].setAttribute( 'aria-label', ariaLabel );
             newButtons[ buttonName ].addEventListener( 'click', callback );
