@@ -11,11 +11,7 @@
     global.browser = mod.exports;
   }
 })(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this, function (module) {
-<<<<<<< HEAD
-  /* webextension-polyfill - v0.7.0 - Tue Nov 10 2020 20:24:04 */
-=======
   /* webextension-polyfill - v0.6.0 - Mon Dec 23 2019 12:32:53 */
->>>>>>> parent of bc729d2 (Update Mozilla's webextension-polyfill to v0.7.0)
 
   /* -*- Mode: indent-tabs-mode: nil; js-indent-level: 2 -*- */
 
@@ -256,15 +252,6 @@
               "minArgs": 3,
               "maxArgs": 3,
               "singleCallbackArg": true
-<<<<<<< HEAD
-            },
-            "elements": {
-              "createSidebarPane": {
-                "minArgs": 1,
-                "maxArgs": 1
-              }
-=======
->>>>>>> parent of bc729d2 (Update Mozilla's webextension-polyfill to v0.7.0)
             }
           }
         },
@@ -607,17 +594,6 @@
             "minArgs": 0,
             "maxArgs": 1
           },
-<<<<<<< HEAD
-          "goBack": {
-            "minArgs": 0,
-            "maxArgs": 1
-          },
-          "goForward": {
-            "minArgs": 0,
-            "maxArgs": 1
-          },
-=======
->>>>>>> parent of bc729d2 (Update Mozilla's webextension-polyfill to v0.7.0)
           "highlight": {
             "minArgs": 1,
             "maxArgs": 1
