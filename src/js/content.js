@@ -120,16 +120,16 @@ const ROOT                      = document.getElementById( 'root' ),
                 }
 
                 if ( ! following ) {
-                    buttonSVGs.follow.normal.src   = resourceURL( 'img/following.svg' );
-                    buttonSVGs.follow.hover.src    = resourceURL( 'img/unfollow.svg' );
+                    buttonSVGs.follow.normal.src   = RESOURCE_URL + 'img/following.svg';
+                    buttonSVGs.follow.hover.src    = RESOURCE_URL + 'img/unfollow.svg';
                     followTextContainer.textContent = 'Unfollow';
                     newButtons.follow.setAttribute( 'data-test-selector', 'unfollow-button' );
                     newButtons.follow.setAttribute( 'aria-label', 'Unfollow Button' );
                     newButtons.follow.classList.remove( 'tw-core-button--primary' );
                     newButtons.follow.classList.add( 'tw-core-button--destructive' );
                 } else {
-                    buttonSVGs.follow.normal.src    = resourceURL( 'img/not-following.svg' );
-                    buttonSVGs.follow.hover.src     = resourceURL( 'img/following.svg' );
+                    buttonSVGs.follow.normal.src    = RESOURCE_URL + 'img/not-following.svg';
+                    buttonSVGs.follow.hover.src     = RESOURCE_URL + 'img/following.svg';
                     followTextContainer.textContent = 'Follow';
                     newButtons.follow.setAttribute( 'data-test-selector', 'follow-button' );
                     newButtons.follow.setAttribute( 'aria-label', 'Follow Button' );
@@ -213,16 +213,16 @@ const ROOT                      = document.getElementById( 'root' ),
             followTextContainer = newButtons.follow.querySelector( '[data-a-target="tw-core-button-label-text"]' );
 
             // "Follow" button
-            buttonSVGs.follow.normal.src = resourceURL( 'img/not-following.svg' );
-            buttonSVGs.follow.hover.src  = resourceURL( 'img/following.svg' );
+            buttonSVGs.follow.normal.src = RESOURCE_URL + 'img/not-following.svg';
+            buttonSVGs.follow.hover.src  = RESOURCE_URL + 'img/following.svg';
             setupButton( 'follow', 'Follow Channel', showNotifButtons );
 
             // "Notifications On" button
-            buttonSVGs.notifsOn.normal.src = resourceURL( 'img/notifications-on.svg' );
+            buttonSVGs.notifsOn.normal.src = RESOURCE_URL + 'img/notifications-on.svg';
             setupButton( 'notifsOn', 'Notifications On', function() { followChannel( true ); } );
 
             // "Notification Off" button
-            buttonSVGs.notifsOff.normal.src = resourceURL( 'img/notifications-off.svg' );
+            buttonSVGs.notifsOff.normal.src = RESOURCE_URL + 'img/notifications-off.svg';
             setupButton( 'notifsOff', 'Notifications Off', function() { followChannel( false ); } )
 
             // Notification setting buttons container
