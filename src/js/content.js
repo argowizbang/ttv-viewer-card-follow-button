@@ -25,7 +25,7 @@
 
 'use strict';
 
-let viewerId, viewerCard, newButtons, buttonSVGs, followTextContainer, followAction,
+let viewerId, viewerName, viewerCard, newButtons, buttonSVGs, followTextContainer, followAction,
     currentUser        = {
         id: 0,
         login: ''
@@ -70,11 +70,10 @@ const ROOT                      = document.getElementById( 'root' ),
         },
         detectViewerCard          = function ( e ) {
             if ( e.target.classList.contains( 'chat-author__display-name' ) || e.target.classList.contains( 'chat-line__message-mention' ) || e.target.classList.contains( 'tw-capcase' ) || e.target.classList.contains( 'tw-ellipsis' ) || e.target.parentNode.classList.contains ( 'chatter-name' ) ) {
-                let viewerName    = e.target.textContent.trim().toLowerCase();
-
+                viewerName  = e.target.textContent.trim();
                 viewerCard  = document.getElementsByClassName( 'chat-room__viewer-card' )[0].getElementsByClassName( 'viewer-card-layer' )[0];
 
-                fetchData( API_URL_BASE + '?login=' + viewerName )
+                fetchData( API_URL_BASE + '?login=' + viewerName.toLowerCase() )
                     .then( function( data ) { viewerId = data.data[0].id; } );
 
                 viewerCardObserver.observe( viewerCard, {
@@ -140,10 +139,12 @@ const ROOT                      = document.getElementById( 'root' ),
 
             newButtons.notifsContainer.classList.remove( 'vcfb-animate' );
         },
-        followChannel                   = function( notificationsSetting ) {
-            changeFollowText();
-            
+        followChannel                   = function( notificationsSetting ) {            
             isFollowing().then( function( following ) {
+                if ( following && ! confirm( 'Unfollow ' + viewerName + '?\r\n\r\nYou will no longer receive notifications or see them in your followed channels list.' ) ) {
+                    return;
+                }
+                
                 let followAction = following ? 'DELETE' : 'POST';
 
                 fetchData( FOLLOWS_ENDPOINT, {
@@ -154,6 +155,8 @@ const ROOT                      = document.getElementById( 'root' ),
                         allow_notifications: notificationsSetting
                     } )
                 } );
+
+                changeFollowText();
             } );
         },
         setupButton                     = function( buttonName, ariaLabel, callback ) {
