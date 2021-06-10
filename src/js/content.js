@@ -46,16 +46,18 @@ const ROOT                      = document.getElementById( 'root' ),
             const SCRIPT_CSS = document.createElement( 'style' );
 
             SCRIPT_CSS.id        = 'vcfb-css';
-            SCRIPT_CSS.innerHTML = '.tw-pd-y-1 [data-test-selector="balloon-inside-click-detector"] { display: none !important; }';
+            SCRIPT_CSS.innerHTML = '.kDfOjx [data-test-selector="toggle-balloon-wrapper__mouse-enter-detector"] { display: none !important; }';
             document.head.appendChild( SCRIPT_CSS );
 
-            ROOT.querySelector( '.tw-pd-y-1 [data-test-selector="user-menu__toggle"]' ).click(); // Click to open dropdown and grab Twitch username
+            ROOT.querySelector( '.kDfOjx [data-test-selector="user-menu__toggle"]' );
+
+            ROOT.querySelector( '.kDfOjx [data-test-selector="user-menu__toggle"]' ).click(); // Click to open dropdown and grab Twitch username
 
             currentUser.login   = document.querySelector( '.user-menu-dropdown__main-menu [data-a-target="user-display-name"]' ).textContent.trim();
 
             SCRIPT_CSS.remove();
 
-            ROOT.querySelector( '.tw-pd-y-1 [data-test-selector="user-menu__toggle"]' ).click(); // Click again to close dropdown
+            ROOT.querySelector( '.kDfOjx [data-test-selector="user-menu__toggle"]' ).click(); // Click again to close dropdown
 
             if ( ! currentUser.id ) {
                 fetchData( API_URL_BASE + '?login=' + currentUser.login )
@@ -171,7 +173,7 @@ const ROOT                      = document.getElementById( 'root' ),
             }
     
             buttonSVGs[ buttonName ].normal.className = 'tw-svg__asset--inherit vcfb-icon tw-mg-r-05';
-            newButtons[ buttonName ].className = 'ScCoreButton-sc-1qn4ixc-0 ScCoreButtonPrimary-sc-1qn4ixc-1 jeBpig tw-core-button vcfb-button';
+            newButtons[ buttonName ].className = 'ScCoreButton-sc-1qn4ixc-0 ScCoreButtonPrimary-sc-1qn4ixc-1 jeBpig tw-core-button jbpuQw vcfb-button';
             newButtons[ buttonName ].setAttribute( 'data-test-selector', buttonName + '-button' );
             newButtons[ buttonName ].setAttribute( 'aria-label', ariaLabel );
             newButtons[ buttonName ].addEventListener( 'click', callback );
