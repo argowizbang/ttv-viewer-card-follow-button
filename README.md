@@ -1,8 +1,16 @@
 # TTV Viewer Card Follow Button
 
-Google Chrome: https://chrome.google.com/webstore/detail/ttv-viewer-card-follow-bu/ffoepnjhmoejbkffmpchccmoghfkofdb
+#ATTENTION#
+============
+On July 27th, 2021 Twitch removed the Follow/Unfollow endpoints from its API. These endpoints were necessary for this extension to function properly and without them this add-on has essentially been rendered useless. As such, until Twitch decides to add in some way for this functionality to be restored I will no longer be supporting this extension.
 
-Mozilla Firefox: https://addons.mozilla.org/en-US/firefox/addon/ttv-viewer-card-follow-button/
+Don't get me wrong, I don't _want_ to stop working on it but unfortunately there's nothing I can do. I'm at the mercy of Twitch's developers.
+
+============
+
+Google Chrome: ~~https://chrome.google.com/webstore/detail/ttv-viewer-card-follow-bu/ffoepnjhmoejbkffmpchccmoghfkofdb~~
+
+Mozilla Firefox: ~~https://addons.mozilla.org/en-US/firefox/addon/ttv-viewer-card-follow-button/~~
 
 TTV Viewer Card Follow Button replaces the "Add Friend" button in the chat viewer cards (seen when you click on a user's name in Twitch chat) with a much more useful "Follow"/"Unfollow" button.
 
